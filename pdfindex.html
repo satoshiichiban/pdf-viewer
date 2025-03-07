@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF 常時表示</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="pdfViewer" src="cable.pdf" allowfullscreen></iframe>
+
+    <button onclick="goFullscreen()">フルスクリーンにする</button>
+
+    <script>
+      function goFullscreen() {
+        document.documentElement.requestFullscreen().catch((err) => {
+          console.log("フルスクリーンエラー: ", err);
+        });
+      }
+    </script>
+  </body>
+</html>
