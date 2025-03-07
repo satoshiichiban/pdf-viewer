@@ -39,12 +39,21 @@
 
     <button onclick="goFullscreen()">フルスクリーンにする</button>
 
+    <!-- 🔥 スクリプトを<body>の最後に配置 -->
     <script>
       function goFullscreen() {
         document.documentElement.requestFullscreen().catch((err) => {
           console.log("フルスクリーンエラー: ", err);
         });
       }
+
+      // スリープ解除・ロック解除時にPDFを再ロード
+      document.addEventListener("visibilitychange", function() {
+        if (!document.hidden) {
+          console.log("画面がアクティブになった！PDFを再読み込みします。");
+          document.getElementById("pdfViewer").src = "cable.pdf"; // PDFを再ロード
+        }
+      });
     </script>
   </body>
 </html>
